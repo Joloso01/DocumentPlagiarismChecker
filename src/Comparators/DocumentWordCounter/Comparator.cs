@@ -13,15 +13,15 @@ using DocumentPlagiarismChecker.Scores;
 namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
 {
     /// <summary>
-    /// The Word Counter Comparator reads a pair of files and counts how many words and how many times appear on each file, and then calculates
-    /// how many of those appearences matches between documents. So, two documents with the same amount of the same words can be a copy with
-    /// a high level of provability.
+    /// El comparador de comtadors de paraules llegeis un parell de fitxers i compta quantes vegades apareixen a cada fitxer i calcula
+    /// quantes d'aquestes aparicions coincideixen entre documents. Per tant, es poden copiar dos documents am la mateixa quantitat de les mateixen paraules
+    /// un alt nivell de probabilitat
     /// </summary>
     /// <typeparam name="Document"></typeparam>
     internal class Comparator: Core.BaseComparator<Document>
     {  
         /// <summary>
-        /// Creates a new instance for the Comparator.
+        /// Crea una nova instancia per Comparator.provability
         /// </summary>
         /// <param name="fileLeftPath">The left side file's path.</param>
         /// <param name="fileRightPath">The right side file's path.</param>
@@ -31,7 +31,7 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
         }  
         
         /// <summary>
-        /// Counts how many words and how many times appears within each document, and checks the matching percentage.
+        /// Compta quantes paraules i quantes vegades apareixen a cada document i comprova el percentatge de coincidencia
         /// </summary>
         /// <returns>The matching's results.</returns>
         public override ComparatorMatchingScore Run(){
