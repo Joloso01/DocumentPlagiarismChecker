@@ -14,31 +14,31 @@ using DocumentPlagiarismChecker.Scores;
 namespace DocumentPlagiarismChecker.Comparators.ParagraphWordCounter
 {
     /// <summary>
-    /// The Paragraph Word Counter Comparator reads a pair of files and counts how many words and how many times appear on each paragraph within a file, and 
-    /// then calculates how many of those appearences matches between documents. So, two documents with the same amount of the same paragraphs and 
-    /// words can be a copy with a high level of provability.
+    /// El comparador de comptadors de paraules de paràgraf llegeix un parell de fitxers i compta quantes paraules i quantes vegades apareixen a cada paràgraf dins d’un fitxer i
+    /// llavors calcula quantes d'aquestes aparicions coincideixen entre documents. Per tant, dos documents amb la mateixa quantitat dels mateixos paràgrafs i
+    /// les paraules poden ser una còpia amb un alt nivell de probabilitat.
     /// </summary>
     /// <typeparam name="Document"></typeparam>
     internal class Comparator: Core.BaseComparator<Document>
     {  
         /// <summary>
-        /// Creates a new instance for the Comparator.
+        /// Crea una nova instància per al comparador.
         /// </summary>
-        /// <param name="fileLeftPath">The left side file's path.</param>
-        /// <param name="fileRightPath">The right side file's path.</param>
-        /// <param name="settings">The settings instance that will use the comparator.</param>
+        /// <param name="fileLeftPath">El camí del fitxer lateral esquerre.</param>
+        /// <param name="fileRightPath">El camí del fitxer del costat dret.</param>
+        /// <param name="settings">La instància de configuració que utilitzarà el comparador.</param>
         public Comparator(string fileLeftPath, string fileRightPath, Settings settings): base(fileLeftPath, fileRightPath, settings){
         }  
         
         /// <summary>
-        /// Counts how many words and how many times appears within each paragraph in a document, and checks the matching percentage.
+        /// Compta quantes paraules i quantes vegades apareixen dins de cada paràgraf en un document i comprova el percentatge de coincidència.
         /// </summary>
-        /// <returns>The matching's results.</returns>
+        /// <returns>Els resultats de la coincidència.</returns>
         public override ComparatorMatchingScore Run(){     
-            //This order is meant to improving performance
+            //Aquest ordre està destinat a millorar el rendiment
             ExcludeSampleExactMatches(); 
-            ExcludeSamplePartialMatches(this.Left, 0.70f);  //TODO: threshold value must be get from settings; check if can be removed
-            ExcludeSamplePartialMatches(this.Right, 0.70f);  //TODO: threshold value must be get from settings; check if can be removed
+            ExcludeSamplePartialMatches(this.Left, 0.70f);  //TODO: el valor llindar ha de ser obtingut de la configuració; comproveu si es pot eliminar
+            ExcludeSamplePartialMatches(this.Right, 0.70f);  //TODO: el valor llindar ha de ser obtingut de la configuració; comproveu si es pot eliminar
             ExcludeExclussionListMatches();
             
             return ComputeMatching(CompareParagraphs(this.Left, this.Right));                                                        
