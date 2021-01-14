@@ -62,6 +62,7 @@ namespace DocumentPlagiarismChecker.Comparators.ParagraphWordCounter
 
         /// <summary>
         /// Compareu la mostra amb el fitxer donat i excloeu els paràgrafs que produeixen una falsa coincidència positiva entre la mostra i el document. 
+        ///
         /// </summary>
         private void ExcludeSampleExactMatches(){
             if(this.Sample == null) return;
